@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:38:51 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 14:49:00 by lsidan           ###   ########.fr       */
+/*   Created: 2021/12/13 14:10:45 by lsidan            #+#    #+#             */
+/*   Updated: 2021/12/13 14:51:33 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	init_stack(t_stack *st, int ac)
+void	sort(void)
 {
-	st->stack = (int *) malloc(sizeof(int) * (ac)); 
-	if (!st->stack)
-		return (EXIT_FAILURE);
-	st->size = ac - 1;
-	return (EXIT_SUCCESS);
 }
 
-void	fill_tab(int ac, char **av, int *tab)
+int	case_2(t_stack *st)
 {
-	int	i;
+	int	tmp;
 
-	i = 1;
-	while (i < ac)
+	tmp = 0;
+	if (st->stack[1] < st->stack[0])
 	{
-		tab[i - 1] = ft_atoi(av[i]);
-		i++;
+		tmp = st->stack[1];
+		st->stack[1] = st->stack[0];
+		st->stack[0] = tmp;
 	}
+	return (0);
 }

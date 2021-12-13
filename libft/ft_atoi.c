@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:17:56 by lsidan            #+#    #+#             */
-/*   Updated: 2021/11/11 09:06:04 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2021/12/13 14:01:41 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_atoi(const char *str)
 		if (str[i++] == '-')
 			sign *= -1;
 	}
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + (str[i] - '0');
