@@ -1,14 +1,16 @@
 NAME	=	push_swap
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g
 
-SRCS	=	main.c
+SRCS	=	main.c \
+			srcs/error.c \
+			srcs/init.c
 
 OBJS	=	${SRCS:.c=.o}
 
 RM		=	rm -f
 
-%.o:	%.c include/push_swap.h
+%.o:	%.c include/push_swap.h Makefile
 		${CC} ${CFLAGS} -c $< -o $@
 
 $(NAME): $(OBJS)
