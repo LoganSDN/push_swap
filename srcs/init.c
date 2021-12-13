@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:38:51 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 14:49:00 by lsidan           ###   ########.fr       */
+/*   Updated: 2021/12/13 18:50:16 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_stack(t_stack *st, int ac)
 {
-	st->stack = (int *) malloc(sizeof(int) * (ac)); 
+	st->stack = (int *) malloc(sizeof(int) * (ac));
 	if (!st->stack)
 		return (EXIT_FAILURE);
 	st->size = ac - 1;

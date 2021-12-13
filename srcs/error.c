@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:18:23 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 17:37:08 by lsidan           ###   ########.fr       */
+/*   Updated: 2021/12/13 19:03:04 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	error(int ac, char **av)
 {
-	if (ac == 1)
-		ft_putstr_fd("Push_swap(), take at least 1 argument (0 given)\n", 1);
+	if (ac < 3)
+		printf("Push_swap(), take at least 2 argument (%d given)\n", ac - 1);
 	else if (!check_same_nb(av))
 		ft_putstr_fd("Error. (Seems you write two or more same digits...)\n", 1);
 	else
