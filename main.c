@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:14:18 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 14:51:40 by lsidan           ###   ########.fr       */
+/*   Updated: 2021/12/13 17:37:29 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	main(int ac, char **av)
 	stack_a = (t_stack *) malloc(sizeof(t_stack));
 	stack_b = (t_stack *) malloc(sizeof(t_stack));
 	if (ac < 2)
-		return (error(ac));
+		return (error(ac, av));
+	if (!check_same_nb(av) || !check_isdigit(av))
+		return (error(ac, av));
 	init_stack(stack_a, ac);
 	fill_tab(ac, av, stack_a->stack);
 	if (ac == 3)
