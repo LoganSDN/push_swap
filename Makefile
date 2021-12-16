@@ -1,12 +1,14 @@
 NAME	=	push_swap
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 SRCS	=	main.c \
 			srcs/error.c \
 			srcs/init.c \
 			srcs/sort.c \
 			srcs/check.c \
+			srcs/swap.c \
+			srcs/push.c
 
 OBJS	=	${SRCS:.c=.o}
 

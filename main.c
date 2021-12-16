@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:14:18 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:09:07 by lsidan           ###   ########.fr       */
+/*   Updated: 2021/12/16 19:26:41 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,16 @@ int	main(int ac, char **av)
 	if (ac == 3)
 		case_2(stack_a);
 	stack_b = (t_stack *) malloc(sizeof(t_stack));
-	ft_print_tab(stack_a->stack, ac);
+	init_stack(stack_b, ac);
+	for (size_t i = 0; i < 7; i++)
+	{
+		pb(stack_a, stack_b);
+		ft_putstr_fd("Stack A : \n===========\n", 1);
+		ft_print_tab(stack_a->stack, ac);
+		ft_putstr_fd("\n\n", 1);
+		ft_putstr_fd("Stack B : \n===========\n", 1);
+		ft_print_tab(stack_b->stack, ac);
+	}
 	free(stack_a);
 	free(stack_b);
 	return (EXIT_SUCCESS);

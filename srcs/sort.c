@@ -6,14 +6,20 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:10:45 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 14:51:33 by lsidan           ###   ########.fr       */
+/*   Updated: 2021/12/16 19:05:31 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	sort(void)
+int	is_full(t_stack	*st)
 {
+	return (st->top == st->size);
+}
+
+int	is_empty(t_stack *st)
+{
+	return (st->top == 0);
 }
 
 int	case_2(t_stack *st)
