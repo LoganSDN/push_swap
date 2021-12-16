@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:18:23 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:18:37 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/04 11:19:14 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/04 12:47:22 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	error(int ac, char **av)
+size_t	ft_strlcpy(char	*dst, const char *src, size_t dstsize)
 {
-	if (ac < 3)
-		printf("Error.\n\
-		Push_swap(), take at least 2 argument (%d given)\n", ac - 1);
-	else if (!check_same_nb(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write two or more same digits...)\n", 1);
-	else if (!check_isdigit(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write an other thing that a number)\n", 1);
-	return (EXIT_FAILURE);
+	size_t	i;
+
+	i = 0;
+	if (dstsize == 0)
+		return ((size_t) ft_strlen(src));
+	while (src[i] != '\0' && i < dstsize - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

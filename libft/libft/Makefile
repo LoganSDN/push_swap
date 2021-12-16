@@ -24,6 +24,8 @@ SRCS	= 	ft_atoi.c \
 			ft_strrchr.c \
 			ft_tolower.c \
 			ft_toupper.c \
+			ft_islower.c \
+			ft_isupper.c \
 			ft_substr.c \
 			ft_strjoin.c \
 			ft_strtrim.c \
@@ -35,8 +37,7 @@ SRCS	= 	ft_atoi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
 			ft_striteri.c \
-			ft_memalloc.c \
-			ft_strcmp.c \
+			ft_putnbr_un_fd.c
 
 SRCS_BONUS =	ft_lstnew.c \
 				ft_lstadd_front.c \
@@ -54,9 +55,10 @@ OBJS	= ${SRCS:.c=.o}
 
 OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
 
-RM		= rm -f
+RM		= rm -rf
 
-%.o:	%.c libft.h Makefile
+%.o:	%.c libft.h
+		@tput bold && tput setaf 5
 		${CC} ${CFLAGS} -c $< -o $@
 
 $(NAME): ${OBJS}
@@ -69,13 +71,14 @@ bonus : ${OBJS_BONUS}
 
 
 clean :
+		@tput setaf 1 && tput bold && echo "Cleaning the .o files ..\n"
 		${RM} ${OBJS} ${OBJS_BONUS}
-		
 
 fclean : clean
+		@tput setaf 1 && echo "\nCleaning the library ..\n"
 		${RM} ${NAME}
 
 re: fclean all
 
-.PHONY : all clean fclean re bonus
+.PHONY : all clean fclean re
 

@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:19:32 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:16:36 by lsidan           ###   ########.fr       */
+/*   Updated: 2021/11/17 19:54:36 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ typedef struct s_list
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void	*s, int n);
-void	*ft_memalloc(size_t size);
 void	*ft_calloc(size_t elementCount, size_t elementSize);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
+int		ft_islower(int c);
+int		ft_isupper(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
@@ -52,13 +53,19 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strcpy(char	*src, char *dst);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+size_t	ft_count_w(char const *s, char c);
+void	ft_free(char	**tofree);
+void	ft_get_next_w(char **next_w, size_t *next_w_len, char c);
+char	**ft_init_tab(int w);
 char	*ft_itoa(int nb);
+size_t	ft_count_digits(int nb);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *str, int fd);
+void	ft_putstr_fd(const char *str, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int nb, int fd);
+void	ft_putnbr_un_fd(unsigned int nb, int fd);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -68,7 +75,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int		str_is_digit(char *str);
-int		ft_strcmp(char *str1, char *str2);
 
 #endif

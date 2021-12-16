@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:18:23 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:18:37 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/04 11:18:21 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/07 15:59:02 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	error(int ac, char **av)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (ac < 3)
-		printf("Error.\n\
-		Push_swap(), take at least 2 argument (%d given)\n", ac - 1);
-	else if (!check_same_nb(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write two or more same digits...)\n", 1);
-	else if (!check_isdigit(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write an other thing that a number)\n", 1);
-	return (EXIT_FAILURE);
+	size_t				i;
+	unsigned char		*s1;
+	unsigned char		*s2;
+
+	i = 0;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	s1 = (unsigned char *) dst;
+	s2 = (unsigned char *) src;
+	while (i < n)
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+	return (s1);
 }

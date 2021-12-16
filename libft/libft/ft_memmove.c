@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:18:23 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:18:37 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/04 11:18:31 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/04 16:06:53 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	error(int ac, char **av)
+void	*ft_memmove(void *dst, void *src, size_t len)
 {
-	if (ac < 3)
-		printf("Error.\n\
-		Push_swap(), take at least 2 argument (%d given)\n", ac - 1);
-	else if (!check_same_nb(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write two or more same digits...)\n", 1);
-	else if (!check_isdigit(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write an other thing that a number)\n", 1);
-	return (EXIT_FAILURE);
+	size_t	i;
+
+	i = 0;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	if (dst < src)
+	{
+		while (i < len)
+		{
+			((char *)dst)[i] = ((char *)src)[i];
+			i++;
+		}
+	}
+	else
+	{
+		while (len > 0)
+		{
+			((char *)dst)[len - 1] = ((char *)src)[len - 1];
+			len--;
+		}
+	}
+	return (dst);
 }

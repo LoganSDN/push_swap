@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_un_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:18:23 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:18:37 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/17 19:54:51 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/17 19:55:26 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	error(int ac, char **av)
+void	ft_putnbr_un_fd(unsigned int nb, int fd)
 {
-	if (ac < 3)
-		printf("Error.\n\
-		Push_swap(), take at least 2 argument (%d given)\n", ac - 1);
-	else if (!check_same_nb(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write two or more same digits...)\n", 1);
-	else if (!check_isdigit(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write an other thing that a number)\n", 1);
-	return (EXIT_FAILURE);
+	unsigned long long	nb1;
+
+	nb1 = nb;
+	if (nb1 >= 10)
+	{
+		ft_putnbr_fd((nb1 / 10), fd);
+		ft_putnbr_fd((nb1 % 10), fd);
+	}
+	else
+		ft_putchar_fd(nb1 + 48, fd);
 }

@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:18:23 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:18:37 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/04 11:19:21 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/04 12:51:34 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	error(int ac, char **av)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if (ac < 3)
-		printf("Error.\n\
-		Push_swap(), take at least 2 argument (%d given)\n", ac - 1);
-	else if (!check_same_nb(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write two or more same digits...)\n", 1);
-	else if (!check_isdigit(av))
-		ft_putstr_fd("Error.\n\
-(Seems you write an other thing that a number)\n", 1);
-	return (EXIT_FAILURE);
+	size_t	i;
+	size_t	j;
+	size_t	k;
+
+	j = 0;
+	i = 0;
+	k = ft_strlen(needle);
+	if (*needle == '\0')
+		return ((char *)haystack);
+	while (*haystack != '\0' && len >= k)
+	{
+		if (*haystack == *needle)
+		{
+			if (ft_strncmp(haystack, needle, k) == 0)
+				return ((char *)haystack);
+		}
+		len--;
+		haystack++;
+	}
+	return (0);
 }
