@@ -5,31 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:38:51 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/16 19:13:25 by lsidan           ###   ########.fr       */
+/*   Created: 2022/01/16 08:58:12 by lsidan            #+#    #+#             */
+/*   Updated: 2022/01/16 20:00:42 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../incl/push_swap.h"
 
-int	init_stack(t_stack *st, int ac)
+void	init_st_b(t_stack *st_a, t_stack *st_b)
 {
-	st->stack = (int *) malloc(sizeof(int) * (ac - 1));
-	if (!st->stack)
-		return (EXIT_FAILURE);
-	st->size = ac - 1;
-	st->top = 0;
-	return (EXIT_SUCCESS);
+	st_b->tab = malloc(sizeof(int) * st_a->size);
+	if (!st_b->tab)
+	{
+		free(st_a->tab);
+		ft_exit();
+	}
+	st_b->tab = init_tab(st_b->tab, st_a->size);
+	st_b->top = -1;
 }
 
-void	fill_tab(int ac, char **av, int *tab)
+int	*init_tab(int *tab, int size)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = -1;
+	while (++i < size)
+		tab[i] = 0;
+	return (tab);
+}
+
+void	ft_new_index(t_stack *st_input, t_stack *cpy)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < st_input->size)
 	{
-		tab[i - 1] = ft_atoi(av[i]);
-		i++;
+		j = -1;
+		while (++j < cpy->size)
+		{
+			if (st_input->tab[i] == cpy->tab[j])
+			{
+				st_input->tab[i] = j;
+				break ;
+			}
+		}
 	}
 }

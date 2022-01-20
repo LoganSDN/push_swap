@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 12:09:10 by lsidan            #+#    #+#             */
-/*   Updated: 2022/01/16 22:36:59 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/02 15:55:47 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/04 15:25:26 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incl/push_swap.h"
+#include "../libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	int	i;
 
-	if (!(ac > 1))
-		exit(1);
-	stack_a = fill_tab(ac, av);
-	init_st_b(&stack_a, &stack_b);
-	if (stack_a.size == 2)
-		swap(&stack_a, 'a');
-	else if (stack_a.size == 3)
-		ft_case_3(&stack_a);
-	else if (stack_a.size == 5)
-		ft_case_5(&stack_a, &stack_b);
-	else
-		radix_sort(&stack_a, &stack_b);
-	ft_freestacks(stack_a, stack_b);
+	i = ft_strlen(s);
+	if ((char) c == '\0')
+		return ((char *) s + i);
+	while (i >= 0)
+	{
+		if (s[i] == (char) c)
+			return ((char *) s + i);
+		i--;
+	}
 	return (0);
 }

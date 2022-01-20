@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 12:09:10 by lsidan            #+#    #+#             */
-/*   Updated: 2022/01/16 22:36:59 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/02 12:27:37 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/04 12:42:08 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incl/push_swap.h"
+#include "../libft.h"
 
-int	main(int ac, char **av)
+int	ft_isalnum(int c)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
-	if (!(ac > 1))
-		exit(1);
-	stack_a = fill_tab(ac, av);
-	init_st_b(&stack_a, &stack_b);
-	if (stack_a.size == 2)
-		swap(&stack_a, 'a');
-	else if (stack_a.size == 3)
-		ft_case_3(&stack_a);
-	else if (stack_a.size == 5)
-		ft_case_5(&stack_a, &stack_b);
-	else
-		radix_sort(&stack_a, &stack_b);
-	ft_freestacks(stack_a, stack_b);
+	if (ft_isdigit(c) == 1 || ft_isalpha (c) == 1)
+		return (1);
 	return (0);
 }

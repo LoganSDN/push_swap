@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:19:32 by lsidan            #+#    #+#             */
-/*   Updated: 2021/12/13 20:16:36 by lsidan           ###   ########.fr       */
+/*   Updated: 2022/01/20 15:13:26 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include "ft_printf/include/ft_printf.h"
+# include "ft_gnl/get_next_line.h"
 
 typedef struct s_list
 {
@@ -24,7 +27,6 @@ typedef struct s_list
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void	*s, int n);
-void	*ft_memalloc(size_t size);
 void	*ft_calloc(size_t elementCount, size_t elementSize);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -56,7 +58,7 @@ char	*ft_itoa(int nb);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *str, int fd);
+void	ft_putstr_fd(const char *str, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int nb, int fd);
 t_list	*ft_lstnew(void *content);
@@ -68,7 +70,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int		str_is_digit(char *str);
-int		ft_strcmp(char *str1, char *str2);
+int		ft_strcmp(const char	*s1, const char	*s2);
+int		ft_isspace(unsigned char c);
 
 #endif

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 12:09:10 by lsidan            #+#    #+#             */
-/*   Updated: 2022/01/16 22:36:59 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/02 14:15:57 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/11 10:39:26 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incl/push_swap.h"
+#include "../libft.h"
 
-int	main(int ac, char **av)
+static int	ft_isupper(int c)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
-	if (!(ac > 1))
-		exit(1);
-	stack_a = fill_tab(ac, av);
-	init_st_b(&stack_a, &stack_b);
-	if (stack_a.size == 2)
-		swap(&stack_a, 'a');
-	else if (stack_a.size == 3)
-		ft_case_3(&stack_a);
-	else if (stack_a.size == 5)
-		ft_case_5(&stack_a, &stack_b);
-	else
-		radix_sort(&stack_a, &stack_b);
-	ft_freestacks(stack_a, stack_b);
+	if (c >= 65 && c <= 90)
+		return (1);
 	return (0);
+}
+
+int	ft_tolower(int c)
+{
+	if (ft_isalpha(c) == 1 && ft_isupper(c) == 1)
+	{
+		c += 32;
+		return (c);
+	}
+	return (c);
 }

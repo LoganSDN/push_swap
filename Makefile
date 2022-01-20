@@ -1,36 +1,51 @@
 NAME	=	push_swap
+RM		=	rm -f
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -g
+CFLAGS	=	-Wall -Wextra -Werror -g
 
 SRCS	=	main.c \
-			srcs/error.c \
 			srcs/init.c \
-			srcs/sort.c \
-			srcs/check.c \
-			srcs/swap.c \
-			srcs/push.c
+			srcs/process.c \
+			srcs/parse.c \
+			srcs/free.c \
+			srcs/exit.c \
+			srcs/utils.c \
+			srcs/atoi_pimp.c \
+			srcs/solvers/radix.c \
+			srcs/solvers/random_three.c \
+			srcs/solvers/random_five.c \
+			srcs/stack_actions/push.c \
+			srcs/stack_actions/rotate.c \
+			srcs/stack_actions/swaps.c \
+			srcs/stack_actions/reverse.c \
 
-OBJS	=	${SRCS:.c=.o}
+OBJS	=	$(SRCS:.c=.o)
 
-RM		=	rm -f
-
-%.o:	%.c include/push_swap.h Makefile
+%.o:	%.c incl/push_swap.h libft/libft.a Makefile
 		${CC} ${CFLAGS} -c $< -o $@
+		@printf	"\033[2K\r\033[0;33m[BUILD - $(NAME)]\033[0m $<\e[0m"
 
-$(NAME): $(OBJS)
-		@make -C ./libft/
-		$(CC) $(OBJS) -L libft -l ft -o $(NAME)
 
-all: $(NAME)
+all		: libft $(NAME)
 
-clean :
-		@make -C ./libft/ clean
-		${RM} ${OBJS} ${OBJS_BONUS}
+$(NAME)	: $(OBJS)
+		$(CC) $(CFLAGS) -L libft -l ft $^ -o $@
+		@printf "\033[2K\r\033[0;32m$(NAME) Successfully build\033[0m\e[0m"
 
-fclean : clean
-		@make -C ./libft/ fclean
-		${RM} ${NAME}
+libft : 
+			@make -C libft
 
-re: fclean all
+clean	:
+			@make clean -C libft
+			$(RM) $(OBJS)
 
-.PHONY : all clean fclean re
+fclean	:	clean
+			@make fclean -C libft
+			$(RM) $(NAME)
+			@printf "\033[2K\r\033[0;31m$(NAME) deleted.\n\e[0m"
+
+re		:	fclean all
+
+.PHONY		:	libft all clean fclean re
+
+.SILENT:

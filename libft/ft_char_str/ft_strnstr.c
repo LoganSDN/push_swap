@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 12:09:10 by lsidan            #+#    #+#             */
-/*   Updated: 2022/01/16 22:36:59 by lsidan           ###   ########.fr       */
+/*   Created: 2021/11/04 11:19:21 by lsidan            #+#    #+#             */
+/*   Updated: 2021/11/04 12:51:34 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incl/push_swap.h"
+#include "../libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	if (!(ac > 1))
-		exit(1);
-	stack_a = fill_tab(ac, av);
-	init_st_b(&stack_a, &stack_b);
-	if (stack_a.size == 2)
-		swap(&stack_a, 'a');
-	else if (stack_a.size == 3)
-		ft_case_3(&stack_a);
-	else if (stack_a.size == 5)
-		ft_case_5(&stack_a, &stack_b);
-	else
-		radix_sort(&stack_a, &stack_b);
-	ft_freestacks(stack_a, stack_b);
+	j = 0;
+	i = 0;
+	k = ft_strlen(needle);
+	if (*needle == '\0')
+		return ((char *)haystack);
+	while (*haystack != '\0' && len >= k)
+	{
+		if (*haystack == *needle)
+		{
+			if (ft_strncmp(haystack, needle, k) == 0)
+				return ((char *)haystack);
+		}
+		len--;
+		haystack++;
+	}
 	return (0);
 }
